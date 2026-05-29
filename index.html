@@ -1360,11 +1360,8 @@
     <div id="view-home" class="view active">
       <div class="home-content">
         <div class="home-hero animate-in">
-          <div class="hero-badge">6-Day Push · Pull · Legs v2</div>
+          <div class="hero-badge">Push · Pull · Legs</div>
           <h1 class="hero-title">Your <em>Strength</em><br />Program</h1>
-          <p class="hero-sub">
-            Upgraded arms & back volume · Built for results
-          </p>
         </div>
 
         <div class="progress-ring-wrap animate-in delay-1">
@@ -2298,8 +2295,7 @@
     ${isDone ? "✓ Workout Completed!" : "✦ Mark as Complete"}
   </button>`;
 
-        // Note
-        html += `<div class="content-note animate-in delay-1">${day.note}</div>`;
+        // Note removed per user request
 
         // Warmup
         html += `<div class="section-header animate-in delay-2">
@@ -2332,11 +2328,11 @@
         const tagCls = TAG_CLASS[ex.tag] || "tag-compound";
         const tagLbl = TAG_LABEL[ex.tag] || ex.tag;
         return `
-        <div class="exercise-card${ex.isNew ? " is-new" : ""}">
+        <div class="exercise-card">
           <div class="ex-card-top" onclick="toggleTip(this)">
             <div class="ex-card-header">
               <div class="ex-name-wrap">
-                <span class="ex-name">${ex.name}${ex.isNew ? '<span class="new-pill">NEW</span>' : ""}</span>
+                <span class="ex-name">${ex.name}</span>
               </div>
               <span class="ex-tag ${tagCls}">${tagLbl}</span>
             </div>
