@@ -2097,6 +2097,19 @@
         } catch {}
       }
 
+      function resetWeekProgress() {
+        const completed = getCompleted();
+        const weekKey = getWeekKey();
+
+        DAYS.forEach((day) => {
+          if (day.id < 6) {
+            delete completed[weekKey + "_" + day.id];
+          }
+        });
+
+        setCompleted(completed);
+      }
+
       /* ===========================
    RENDER HOME
 =========================== */
@@ -2440,6 +2453,15 @@
             }
             saveStreak(streak);
             saveLastDoneDate(today);
+          }
+
+          const weekDone = DAYS.filter(
+            (d) => d.id < 6 && completed[weekKey + "_" + d.id],
+          ).length;
+
+          if (weekDone === 6) {
+            resetWeekProgress();
+            showToast("Week complete. Ring reset for a fresh start.");
           }
 
           showCelebration(dayId);
